@@ -1,7 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from shop.models import Product
-# from coupons.models import Coupon
+from coupons.models import Coupon
 
 class Cart(object):
 
@@ -78,7 +78,6 @@ class Cart(object):
         del self.session[settings.CART_SESSION_ID]
         self.save()
 
-'''
     @property
     def coupon(self):
         if self.coupon_id:
@@ -93,4 +92,3 @@ class Cart(object):
 
     def get_total_price_after_discount(self):
         return self.get_total_price() - self.get_discount()
-'''
