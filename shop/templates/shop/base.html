@@ -5,27 +5,31 @@
   <meta charset="utf-8" />
   <title>{% block title %}birdie lou{% endblock %}</title>
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 </head>
 <body>
   <div id="header">
     <a href="/" class="logo">birdie lou</a>
-  </div>
-  <div id="subheader">
-    <div class="cart">
-      {% with total_items=cart|length %}
-          {% if cart|length > 0 %}
-            your cart: 
-            <a href="{% url 'cart:cart_detail' %}">
-              {{ total_items }} item{{ total_items|pluralize }},
-              ${{ cart.get_total_price }}
-            </a>
-          {% else %}
-            your cart is empty.
-          {% endif %}
-        {% endwith %}
+    <div id="subheader">
+      <div class="cart">
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+              your cart: 
+              <a href="{% url 'cart:cart_detail' %}">
+                {{ total_items }} item{{ total_items|pluralize }},
+                ${{ cart.get_total_price }}
+              </a>
+            {% else %}
+              your cart is empty.
+            {% endif %}
+          {% endwith %}
+      </div>
     </div>
   </div>
+  
   <div id="content">
     {% block content %}
     {% endblock %}

@@ -1,14 +1,14 @@
 {% extends "shop/base.html" %}
 
 {% block title %}
-  Checkout
+  checkout
 {% endblock %}
 
 {% block content %}
-  <h1>Checkout</h1>
+  <h1>checkout</h1>
 
   <div class="order-info">
-    <h3>Your order</h3>
+    <h3>your order</h3>
     <ul>
       {% for item in cart %}
         <li>
@@ -17,7 +17,7 @@
         </li>
       {% endfor %}
     </ul>
-    <p>Total: ${{ cart.get_total_price }}</p>
+    <p>total: ${{ cart.get_total_price }}</p>
   </div>
 
   <form action="." method="post" class="order-form">
