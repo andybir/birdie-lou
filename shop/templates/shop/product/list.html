@@ -7,14 +7,14 @@
 
 {% block content %}
   <div id="sidebar">
-    <h3>shop</h3>
+    <!-- <h3>shop</h3> -->
     <ul>
       <li {% if not category %}class="selected"{% endif %}>
-        <a href="{% url 'shop:product_list' %}">all</a>
+        <a href="{% url 'shop:product_list' %}">shop all</a>
       </li>
       {% for c in categories %}
         <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-          <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+          <a href="{{ c.get_absolute_url }}">shop {{ c.name }}</a>
         </li>
       {% endfor %}
     </ul>
