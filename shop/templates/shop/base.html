@@ -12,7 +12,7 @@
 </head>
 <body>
   <div id="header">
-    <a href="/" class="logo">birdie lou</a>
+    <a href="{% url 'shop:product_list' %}" class="logo">birdie lou</a>
     <div id="subheader">
       <div class="cart">
         {% with total_items=cart|length %}
