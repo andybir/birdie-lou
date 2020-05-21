@@ -8,6 +8,9 @@ def index(request):
 def about(request):
     return render(request, 'shop/about.html')
 
+def contact(request):
+    return render(request, 'shop/contact.html')
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
