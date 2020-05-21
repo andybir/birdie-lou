@@ -11,6 +11,9 @@ def about(request):
 def contact(request):
     return render(request, 'shop/contact.html')
 
+def info(request):
+    return render(request, 'shop/info.html')
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
