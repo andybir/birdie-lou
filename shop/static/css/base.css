@@ -40,6 +40,11 @@ a.button.light {
 /* Index */
 #index {
     /* display: flex; */
+    background-image: url(/static/img/bird-on-wire.jpg);
+    background-repeat: no-repeat;
+    height: 500px;
+    background-position: center;
+    background-size: cover;
 }
 
 #index-title {

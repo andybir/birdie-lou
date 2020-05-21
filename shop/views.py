@@ -5,6 +5,9 @@ from cart.forms import CartAddProductForm
 def index(request):
     return render(request, 'shop/index.html')
 
+def about(request):
+    return render(request, 'shop/about.html')
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
