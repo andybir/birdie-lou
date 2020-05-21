@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}birdie lou{% endblock %}</title>
+  <link href="{% static 'css/base.css' %}" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+</head>
+<body>
+  <div id="index">
+    <div id="index-title">
+      <h1>birdie lou</h1>
+    </div>
+    <div id="index-menu">
+      <a href="/shop/">shop</a>
+      <a>contact</a>
+      <a>about</a>
+    </div>
+  </div>
+</body>
+</html>
