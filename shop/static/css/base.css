@@ -47,7 +47,12 @@ a.button.light {
     background-size: cover;
 }
 
-#index-title {
+.contact, .about {
+    display: flex;
+    flex-direction: column;
+}
+
+#index-title, .about-title, .contact-title, .info-title {
     display: flex;
     justify-content: center;
     font-size: 50px;
@@ -58,6 +63,23 @@ a.button.light {
     flex-direction: column;
     margin-left: 40px;
     font-size: 20px;
+}
+
+.about-text-container, .contact-text-container, .info-text-container {
+    /* margin: 20px 50px; */
+    margin: auto;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-text, .contact-text, .info-text {
+    margin: auto;
+}
+
+.info-subtitle {
+    margin: auto;
 }
 
 .text-left {
