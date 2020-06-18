@@ -12,7 +12,7 @@
 </head>
 <body class="base-body">
   <div id="header">
-    <a href="{% url 'shop:product_list' %}" class="logo">birdie lou</a>
+    <a href="{% url 'shop:product_list' %}"><img class="logo" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
     <div id="subheader">
       <div class="cart">
         {% with total_items=cart|length %}

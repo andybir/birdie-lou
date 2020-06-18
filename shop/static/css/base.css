@@ -49,14 +49,18 @@ a.button.light {
     background-color: #ECDDD0;
     /* background-repeat: no-repeat; */
     position: relative;
-    height: 80%;
+    height: 100%;
     background-position: center;
     background-size: cover;
     /* transform: translate(-5%); */
 }
 
+/* .index-header {
+    position: fixed;
+
+} */
+
 .index-title {
-    position: absolute;
     /* top: 50%; */
     /* left: 50%; */
     /* transform: translate(-50%, -50%); */
@@ -80,6 +84,8 @@ a.button.light {
 
 .contact-body {
     background-color: #6882A9;
+    display: flex;
+    /* flex-direction: column; */
 }
 
 .info-body {
@@ -229,7 +235,7 @@ ul.errorlist {
     float:left; 
     color:#333;
     font-size:22px;
-    width: 200px;
+    width: 150px;
     margin-right:10%;
     padding-left: 100px;
 }
