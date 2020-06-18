@@ -40,13 +40,33 @@ a.button.light {
 }
 
 /* Index */
-#index {
+.index-html, .index-body {
+    height: 100%;
+}
+.index {
     /* display: flex; */
-    background-image: url(/static/img/bird-on-wire.jpg);
-    background-repeat: no-repeat;
-    height: 500px;
+    background-image: url(/static/img/Bird_02.png);
+    background-color: #ECDDD0;
+    /* background-repeat: no-repeat; */
+    position: relative;
+    height: 80%;
     background-position: center;
     background-size: cover;
+    /* transform: translate(-5%); */
+}
+
+.index-title {
+    position: absolute;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50%, -50%); */
+    text-align: center;
+    margin: 16px 0;
+}
+
+.master-logo {
+    max-height: 100%;
+    max-width: 75%;
 }
 
 .contact, .about {
@@ -54,7 +74,19 @@ a.button.light {
     flex-direction: column;
 }
 
-#index-title, .about-title, .contact-title, .info-title {
+.about-body {
+    background-color: #D9775C;
+}
+
+.contact-body {
+    background-color: #6882A9;
+}
+
+.info-body {
+    background-color: #9DA968;
+}
+
+/*.index-title, */.about-title, .contact-title, .info-title {
     display: flex;
     justify-content: center;
     font-size: 50px;
@@ -63,9 +95,15 @@ a.button.light {
 #index-menu {
     display: flex;
     flex-direction: column;
+    padding-top: 250px;
+
     margin-left: 40px;
     font-size: 20px;
 }
+
+/* #index-menu a {
+    display: block;
+} */
 
 .about-text-container, .contact-text-container, .info-text-container {
     /* margin: 20px 50px; */
@@ -85,6 +123,10 @@ a.button.light {
     margin: auto;
 }
 
+/* base.html */
+.base-body {
+    background-color: #ECDDD0;
+}
 .text-left {
     text-align:left;
 }

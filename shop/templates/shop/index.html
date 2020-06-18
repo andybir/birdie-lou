@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html class="index-html">
 <head>
   <meta charset="utf-8" />
   <title>{% block title %}birdie lou{% endblock %}</title>
@@ -10,10 +10,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
   <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
 </head>
-<body>
-  <div id="index">
-    <div id="index-title">
-      <h1>birdie lou</h1>
+<body class="index-body">
+  <div class="index">
+    <div class="index-title">
+      <img class="master-logo" src="{% static 'img/master_logo.png' %}" alt="">
     </div>
     <div id="index-menu">
       <a href="/shop/">shop</a>
