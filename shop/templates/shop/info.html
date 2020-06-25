@@ -19,13 +19,15 @@
     <a href="/info">info</a>
   </div>
   <div class="info">
-    <header>
-      <a href="{% url 'shop:index' %}"><img class="logo" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
-      <div class="info-title">
-        <h1>info</h1>
-      </div>
+    <header class="index-header">
+      <a href="{% url 'shop:index' %}"><img class="index-logo" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
+      <!-- <div class="info-title">
+        <h1 class="info-title">info</h1>
+      </div> -->
     </header>
-    
+    <div class="info-title">
+      <h1>info</h1>
+    </div>
     <div class="info-text-container">
       <h2 class="info-subtitle">shipping</h2>
       <p class="info-text">Orders over $100 ship free! For orders under $100, we charge a flat rate shipping & handling fee of $8.</p>

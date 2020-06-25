@@ -54,10 +54,16 @@ a.button.light {
     background-size: cover;
 }
 
-/* .index-header {
-    position: fixed;
+.index-header {
+    display: flex;
+    flex-flow: row;
+}
 
-} */
+.index-logo {
+    width: 150px;
+    margin-top: 40px;
+
+}
 
 .index-title {
     /* top: 50%; */
