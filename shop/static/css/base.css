@@ -39,6 +39,11 @@ a.button.light {
     background:#ededed;
 }
 
+.link-continue-shopping, .link-email {
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: underline;
+}
+
 /* Index pages */
 /*
  * Globals

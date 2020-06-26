@@ -4,7 +4,6 @@
 {% bootstrap_javascript jquery='full' %}
 {% bootstrap_messages %}
 
-
 <!doctype html>
 <html class="index-html" lang="en">
   <head>
@@ -48,28 +47,21 @@
   <header class="masthead mb-auto">
     <div class="inner">
       <a href="{% url 'shop:index' %}"><img class="masthead-brand" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
-      <!-- <h3 class="masthead-brand">birdie lou</h3> -->
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="/shop/">shop</a>
+        <a class="nav-link" href="/shop/">shop</a>
         <a class="nav-link" href="/about">about</a>
         <a class="nav-link" href="/contact">contact</a>
         <a class="nav-link" href="/info">info</a>
       </nav>
     </div>
   </header>
-
   <main role="main" class="inner cover">
-    <img class="img-fluid" src="{% static 'img/Bird_02.png' %}" alt="">
-    <!-- <h1 class="cover-heading">Cover your page.</h1>
-    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p> -->
+    <a href="/shop/"><img class="img-fluid" src="{% static 'img/Bird_02.png' %}" alt=""></a>
   </main>
 
   <footer class="mastfoot mt-auto">
     <div class="inner">
-      <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p></p>
     </div>
   </footer>
 </div>
