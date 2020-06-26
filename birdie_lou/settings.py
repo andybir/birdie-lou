@@ -134,7 +134,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CART_SESSION_ID = 'cart'
 
 # E-mail
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'hello@birdie-lou.com'
+EMAIL_HOST_PASSWORD = 'Gretarose1'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 # Braintree settings
 BRAINTREE_MERCHANT_ID = 'mbcfpdtbgj6h2nr3' # Merchant ID
