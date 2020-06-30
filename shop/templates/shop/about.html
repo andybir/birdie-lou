@@ -1,38 +1,15 @@
+{% extends 'shop/index_base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>{% block title %}about{% endblock %}</title>
-  <link href="{% static 'css/base.css' %}" rel="stylesheet">
-  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-  <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
-</head>
 
-<body class="about-body">
-  <div class="index-menu">
-    <a href="/shop/">shop</a>
-    <a href="/about">about</a>
-    <a href="/contact">contact</a>
-    <a href="/info">info</a>
-  </div>
-  <div class="about">
-    <header class="index-header">
-      <a href="{% url 'shop:index' %}"><img class="index-logo" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
-    </header>
-    <div class="about-title">
-      <h1>about</h1>
-    </div>
-    <div class="about-text-container">
-      <p class="about-text">Birdie is an online destination for handmade and vintage children’s clothing, founded by Laura Mariani and named after her daughter, Roberta Louise (Birdie Lou!). All handmade clothing is crafted from natural or vintage fabrics and all tie dyed pieces are dyed by hand using actual plants, such as avocado, onion, and beets. Our garments are produced slowly and mindfully in Brooklyn, New York with a focus on simple, versatile, and comfortable pieces.</p>
-      <p class="about-text">In an effort to reduce waste, some handmade styles will be made to order, so please allow 7-10 business days for production. Additionally, since many materials are vintage, we have limited quantities and sizes. Once sold out, we will no longer be able to offer that product.</p>
-    </div>
-    
-  </div>
-</body>
-  
+{% block title %}
+  about
+{% endblock title %}
 
-</html>
-    
+{% block content %}
+  <h1 class="cover-heading">about</h1>
+  <p class="lead">Birdie is an online destination for handmade and vintage children’s clothing, founded by Laura Mariani and named after her daughter, Roberta Louise (Birdie Lou!). All handmade clothing is crafted from natural or vintage fabrics and all tie dyed pieces are dyed by hand using actual plants, such as avocado, onion, and beets. Our garments are produced slowly and mindfully in Brooklyn, New York with a focus on simple, versatile, and comfortable pieces.</p>
+  <p class="lead">In an effort to reduce waste, some handmade styles will be made to order, so please allow 7-10 business days for production. Additionally, since many materials are vintage, we have limited quantities and sizes. Once sold out, we will no longer be able to offer that product.</p>
+  <p class="lead">
+    <a href="/shop/" class="btn btn-lg btn-secondary">shop now</a>
+  </p>
+{% endblock content %}

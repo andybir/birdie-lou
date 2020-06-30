@@ -29,11 +29,11 @@ def payment_process(request):
             order.braintree_id = result.transaction.id
             order.save()
             # create invoice e-mail
-            subject = 'Roberta - Invoice no. {}'.format(order.id)
+            subject = 'birdie lou - invoice no. {}'.format(order.id)
             message = 'Please, find attached the invoice for your recent purchase.'
             email = EmailMessage(subject,
                                  message,
-                                 'admin@roberta.com',
+                                 'hello@birdie-lou.com',
                                  [order.email])
             # generate PDF
             html = render_to_string('orders/order/pdf.html', 

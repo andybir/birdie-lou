@@ -1,95 +1,13 @@
+{% extends 'shop/index_base.html' %}
 {% load static %}
-{% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{% bootstrap_messages %}
 
-<!doctype html>
-<html class="index-html" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.0.1">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
-    <title>{% block title %}birdie lou{% endblock %}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
-
-    <!-- Bootstrap core CSS -->
-<!-- <link href="../assets/dist/css/bootstrap.css" rel="stylesheet"> -->
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="{% static 'css/base.css' %}" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <a href="{% url 'shop:index' %}"><img class="masthead-brand" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link" href="/shop/">shop</a>
-        <a class="nav-link" href="/about">about</a>
-        <a class="nav-link" href="/contact">contact</a>
-        <a class="nav-link" href="/info">info</a>
-      </nav>
-    </div>
-  </header>
-  <main role="main" class="inner cover">
-    <a href="/shop/"><img class="img-fluid" src="{% static 'img/Bird_02.png' %}" alt=""></a>
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p></p>
-    </div>
-  </footer>
-</div>
-</body>
-</html>
-
-<!-- <body class="index-body">
-  <header class="index-header">
-    <div class="index-title">
-      <img class="master-logo" src="{% static 'img/master_logo.png' %}" alt="">
-    </div>
-  </header>
+{% block title %}
+  birdie lou
+{% endblock title %}
   
+
+{% block content %}
+  <a href="/shop/"><img class="img-fluid" src="{% static 'img/Bird_02.png' %}" alt=""></a>
+{% endblock content %}
   
-  <div class="index-divs">
-    <aside>
-      <div class="index-menu">
-        <a href="/shop/">shop</a>
-        <a href="/about">about</a>
-        <a href="/contact">contact</a>
-        <a href="/info">info</a>
-      </div>
-    </aside>
-    <div class="index">
-      <div class="index-bg">
-        <img class="index-bg-img" src="{% static 'img/Bird_02.png' %}" alt="">
-      </div>
-    </div>
-  </div>
-</body>
-</html> -->
