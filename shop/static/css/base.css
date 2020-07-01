@@ -44,7 +44,6 @@ a.button.light {
     text-decoration: underline;
 }
 
-/* Index pages */
 /*
  * Globals
  */
@@ -66,6 +65,7 @@ a:hover {
   border: .05rem solid #111;
 }
 
+/* Index pages */
 
 /*
  * Base structure
@@ -289,7 +289,7 @@ a:hover {
 
 /* base.html */
 .base-body {
-    background-color: #ECDDD0;
+    background-color: #fff;
 }
 .text-left {
     text-align:left;
@@ -588,6 +588,15 @@ ul.errorlist {
 
 .footer-item {
     padding: 3px 0 3px 100px;
+}
+
+/* Bootstrap customs */
+.masthead {
+    margin: 0 1rem 0 1rem;
+}
+.jumbotron {
+    background-color: #fff;
+    margin-bottom: 0;
 }
 
 /* braintree hosted fields */

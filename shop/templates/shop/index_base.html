@@ -1,11 +1,13 @@
 {% load static %}
 {% load bootstrap4 %}
+<!-- Bootstrap core CSS -->
 {% bootstrap_css %}
+
 {% bootstrap_javascript jquery='full' %}
 {% bootstrap_messages %}
 
 <!doctype html>
-<html class="index-html" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,12 +18,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
     <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/"> -->
+
     <title>{% block title %}birdie lou{% endblock %}</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/cover/">
-
-    <!-- Bootstrap core CSS -->
-<!-- <link href="../assets/dist/css/bootstrap.css" rel="stylesheet"> -->
 
     <style>
       .bd-placeholder-img {
@@ -43,24 +44,41 @@
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
   </head>
   <body class="text-center">
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
+    <div class=" d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="container mb-auto">
     <div class="inner">
       <a href="{% url 'shop:index' %}"><img class="masthead-brand" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
       <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link" href="/shop/">shop</a>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">shop</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/handmade/">handmade</a>
+            <a class="dropdown-item" href="/vintage/">vintage</a>
+          </div>
+        </li> -->
+        <a class="nav-link" href="/shop">shop</a>
         <a class="nav-link" href="/about">about</a>
         <a class="nav-link" href="/contact">contact</a>
         <a class="nav-link" href="/info">info</a>
+        <a class="nav-link" href="{% url 'cart:cart_detail' %}">
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+              your cart: 
+                {{ total_items }} item{{ total_items|pluralize }},
+                ${{ cart.get_total_price }}
+              </a>
+            {% else %}
+              your cart is empty.
+            {% endif %}
+          {% endwith %}
       </nav>
     </div>
   </header>
-  <main role="main" class="inner cover">
+  <main role="main" class="inner cover container">
     
     {% block content %}
       
     {% endblock content %}
-      
   </main>
 
   <footer class="mastfoot mt-auto">
@@ -70,30 +88,7 @@
   </footer>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
 </html>
-
-<!-- <body class="index-body">
-  <header class="index-header">
-    <div class="index-title">
-      <img class="master-logo" src="{% static 'img/master_logo.png' %}" alt="">
-    </div>
-  </header>
-  
-  
-  <div class="index-divs">
-    <aside>
-      <div class="index-menu">
-        <a href="/shop/">shop</a>
-        <a href="/about">about</a>
-        <a href="/contact">contact</a>
-        <a href="/info">info</a>
-      </div>
-    </aside>
-    <div class="index">
-      <div class="index-bg">
-        <img class="index-bg-img" src="{% static 'img/Bird_02.png' %}" alt="">
-      </div>
-    </div>
-  </div>
-</body>
-</html> -->
