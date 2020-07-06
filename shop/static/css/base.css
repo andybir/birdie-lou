@@ -229,9 +229,9 @@ a:hover {
     justify-items: center;
 }
 
-.about-body {
-    background-color: #D9775C;
-    display: flex;
+.index-base-body {
+    background-image: url('/static/img/About Page Illustrations.png') no-repeat !important;
+    background-size: cover;
 }
 
 .contact-body {
@@ -597,6 +597,10 @@ ul.errorlist {
 .jumbotron {
     background-color: #fff;
     margin-bottom: 0;
+}
+
+.container {
+    padding: 0;
 }
 
 /* braintree hosted fields */
