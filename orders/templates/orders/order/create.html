@@ -15,29 +15,20 @@
       <span class="badge badge-secondary badge-pill">{{ cart.item.count }}</span>
     </h4>
     <ul class="list-group mb-3">
-      
       {% for item in cart %}
-        
-      
-        
       <li class="list-group-item d-flex justify-content-between lh-condensed">
         <div>
           <h6 class="my-0">{{ item.product.name }}</h6>
           <small class="text-muted">quantity: {{ item.quantity }}</small>
         </div>
-        <span class="text-muted">$12</span>
+        <span class="text-muted">${{ item.total_price }}</span>
       </li>
       {% endfor %}
-
-      
-      
       <li class="list-group-item d-flex justify-content-between">
         <span>total</span>
         <strong>${{ cart.get_total_price }}</strong>
       </li>
     </ul>
-
-    
   </div>
   <div class="col-md-8 order-md-1">
     <form action="." method="post" class="">
@@ -51,7 +42,7 @@
 </div>
 {% endblock %}
 
-  <h1>checkout</h1>
+  <!-- <h1>checkout</h1>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -83,26 +74,4 @@
     </div>
     <p><input type="submit" value="continue to payment"></p>
   </form>
-</div>
-
-
-<!-- <h1>checkout</h1>
-
-  <div class="order-info">
-    <h3>your order</h3>
-    <ul>
-      {% for item in cart %}
-        <li>
-          {{ item.quantity }}x {{ item.product.name }}
-          <span>${{ item.total_price }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-    <p>total: ${{ cart.get_total_price }}</p>
-  </div>
-
-  <form action="." method="post" class="order-form">
-    {{ form.as_p }}
-    <p><input type="submit" value="continue to payment"></p>
-    {% csrf_token %}
-  </form> -->
+</div> -->

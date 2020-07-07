@@ -7,7 +7,7 @@
 
 {% block content %}
 <main role="main">
-  <section class="jumbotron text-center">
+  <section class=" text-center">
     <div class="container">
       <h1>{% if category %}{{ category.name }}{% else %}shop all{% endif %}</h1>
       <p class="lead text-muted">category description</p>
@@ -17,7 +17,7 @@
         {% endfor %}
     </div>
   </section>
-  <div class="album py-5">
+  <div class="album py-3">
     <div class="container">
       <div class="row">
       {% for product in products %}

@@ -6,8 +6,10 @@ from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.conf import settings
 from io import BytesIO
+from cart.cart import Cart
 
 def payment_process(request):
+    # cart = Cart(request)
     order_id = request.session.get('order_id')
     order = get_object_or_404(Order, id=order_id)
 
@@ -48,6 +50,9 @@ def payment_process(request):
                          'application/pdf')
             # send e-mail
             email.send()
+
+            # clear the cart
+            # cart.clear()
             
             return redirect('payment:done')
         else:
