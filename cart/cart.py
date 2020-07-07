@@ -20,7 +20,7 @@ class Cart(object):
 
     def add(self, product, quantity=1, update_quantity=False):
         """
-        Add a product to the cart or update it quantity.
+        Add a product to the cart or update its quantity.
         """
         product_id = str(product.id)
         if product_id not in self.cart:

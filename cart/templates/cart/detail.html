@@ -42,10 +42,8 @@
     <p>subtotal</p>
     <p class="num">${{ cart.get_total_price }}</p>
   </div>
-  <div class="text-right">
-    <a href="{% url 'shop:product_list' %}" class="btn btn-light">continue shopping</a>
-    <a href="{% url 'orders:order_create' %}" class="btn btn-dark">checkout</a>
-  </div>
+    <a href="{% url 'shop:product_list' %}" class="btn btn-block btn-light">continue shopping</a>
+    <a href="{% url 'orders:order_create' %}" class="btn btn-block btn-dark">checkout</a>
 {% endblock %}
 
 <!-- <div class="container-fluid">
