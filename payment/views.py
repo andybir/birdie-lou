@@ -32,7 +32,7 @@ def payment_process(request):
             order.save()
             # create invoice e-mail
             subject = 'birdie lou - invoice no. {}'.format(order.id)
-            message = 'Please, find attached the invoice for your recent purchase.'
+            message = 'Thank you for ordering from birdie lou! Please see attached for your invoice.\n\nIf you have any questions about your order please contact us at hello@birdie-lou.com.'
             email = EmailMessage(subject,
                                  message,
                                  'hello@birdie-lou.com',
