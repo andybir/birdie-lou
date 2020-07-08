@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'coupons.apps.CouponsConfig',
     'bootstrap4',
     'crispy_forms',
+    'django_countries',
 ]
 
 MIDDLEWARE = [

@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.core.validators import MinValueValidator, \
                                    MaxValueValidator
 from coupons.models import Coupon
+from django_countries.fields import CountryField
 
 class Order(models.Model):
     first_name = models.CharField('first name', 
@@ -13,10 +14,15 @@ class Order(models.Model):
     email = models.EmailField('e-mail',)
     address = models.CharField('address', 
                                max_length=250)
-    postal_code = models.CharField('postal code', 
-                                   max_length=20)
     city = models.CharField('city', 
                             max_length=100)
+    country = CountryField(blank_label='United States',
+                           default=False)
+    state = models.CharField('state',
+                             max_length=100,
+                            default=False)
+    postal_code = models.CharField('postal code', 
+                                   max_length=20)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
