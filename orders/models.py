@@ -16,11 +16,10 @@ class Order(models.Model):
                                max_length=250)
     city = models.CharField('city', 
                             max_length=100)
-    country = CountryField(blank_label='United States',
-                           default=False)
+    country = CountryField(default=['US'])
     state = models.CharField('state',
                              max_length=100,
-                            default=False)
+                            default='')
     postal_code = models.CharField('postal code', 
                                    max_length=20)
     created = models.DateTimeField(auto_now_add=True)
