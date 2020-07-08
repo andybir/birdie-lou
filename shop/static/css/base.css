@@ -24,6 +24,7 @@ a:hover {
     color:#77b6e2;
 }
 
+/*
 a.button, input[type="submit"] {
     color:#fff;
     background:#212529;
@@ -33,6 +34,7 @@ a.button, input[type="submit"] {
     font-size:14px;
     border:0;
 }
+*/
 
 a.button.light {
     color:#666;
@@ -343,7 +345,7 @@ td input[type="submit"] {
     padding:4px 10px;
 }
 
-form p label, form p input {
+/* form p label, form p input {
     float:left;
     clear:both;
 }
@@ -363,7 +365,7 @@ form p input {
     background:#efefef;
     color:#666;
     border-radius:4px;
-}
+} */
 
 ul.errorlist {
    float:left;
@@ -600,8 +602,13 @@ ul.errorlist {
     margin-bottom: 0;
 }
 
-.container {
+/* .container {
     padding: 0;
+} */
+
+.detail-img {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
 }
 
 /* braintree hosted fields */

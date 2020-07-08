@@ -1,26 +1,27 @@
 {% extends "shop/index_base.html" %}
     {% load static %}
     
-    {% block title %}
-      {{ product.name }}
-    {% endblock %}
+{% block title %}
+  {{ product.name }}
+{% endblock %}
+
+{% block content %}
+  <div class="container p-0">
+    <img class="img-fluid detail-img" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
+  </div>
+  <div class="container">
+    <h2>{{ product.name }}</h2>
+    <p><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></p>
+    <p>${{ product.price }}</p>
+    <form action="{% url 'cart:cart_add' product.id %}" method="post">
+      {{ cart_product_form }}
+      {% csrf_token %}
+      <input class="btn btn-dark" type="submit" value="add to cart">
+    </form>
+    {{ product.description|linebreaks }}
+  </div>
+{% endblock %}
     
-    {% block content %}
-      <div class="container py-4">
-        <img class="img-fluid" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="">
-      </div>
-      <div class="container">
-        <h2>{{ product.name }}</h2>
-        <h3><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h3>
-        <p class="price">${{ product.price }}</p>
-        <form action="{% url 'cart:cart_add' product.id %}" method="post">
-          {{ cart_product_form }}
-          {% csrf_token %}
-          <input type="submit" value="add to cart">
-        </form>
-        {{ product.description|linebreaks }}
-      </div>
-    {% endblock %}
     <!-- Carousel code -->
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">

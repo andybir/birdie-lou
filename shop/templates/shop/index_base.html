@@ -67,14 +67,14 @@
                 {{ total_items }} item{{ total_items|pluralize }},
                 ${{ cart.get_total_price }}
             {% else %}
-              your cart is empty.
+              cart
             {% endif %}
           {% endwith %}
         </a>
       </nav>
     </div>
   </header>
-  <main role="main" class="inner cover container">
+  <main role="main" class="inner cover container px-0">
     
     {% block content %}
       
