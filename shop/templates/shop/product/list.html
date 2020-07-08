@@ -21,8 +21,8 @@
     <div class="container">
       <div class="row">
       {% for product in products %}
-        <div class="col-md-4 card-group">
-          <div class="card mb-4 shadow-sm">
+        <div class="col-md-4 card-group px-1">
+          <div class="card mb-2 shadow-sm">
             <a href="{{ product.get_absolute_url }}">
               <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="bd-placeholder-img card-img-top img-fluid" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text></img>
               <div class="card-body">

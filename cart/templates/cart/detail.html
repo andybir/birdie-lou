@@ -7,37 +7,43 @@
 
 {% block content %}
 <h1>my cart</h1>
-  {% for item in cart %}
-    {% with product=item.product %}
-      <div class="card mb-3">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <a href="{{ product.get_absolute_url }}">
-              <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-img-top" alt="">
-            </a>
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
+{% with total_items=cart|length %}
+  {% if cart|length > 0 %}
+    {% for item in cart %}
+      {% with product=item.product %}
+        <div class="card mb-3">
+          <div class="row no-gutters">
+            <div class="col-md-4">
               <a href="{{ product.get_absolute_url }}">
-                <h5 class="card-title">{{ product.name }}</h5>
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-img-top" alt="">
               </a>
-              <p class="card-text">
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                {{ item.update_quantity_form.quantity }}
-                {{ item.update_quantity_form.update }}
-                <input type="submit" value="update">
-                {% csrf_token %}
-                </form>
-              </p>
-              <p class="card-text">price: ${{ item.price }}</p>
-              <p class="card-text">item total price: ${{ item.total_price }}</p>
-              <a href="{% url 'cart:cart_remove' product.id %}" class="card-link">remove</a>
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <a href="{{ product.get_absolute_url }}">
+                  <h5 class="card-title">{{ product.name }}</h5>
+                </a>
+                <p class="card-text">
+                  <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                  {{ item.update_quantity_form.quantity }}
+                  {{ item.update_quantity_form.update }}
+                  <input type="submit" value="update">
+                  {% csrf_token %}
+                  </form>
+                </p>
+                <p class="card-text">price: ${{ item.price }}</p>
+                <p class="card-text">item total price: ${{ item.total_price }}</p>
+                <a href="{% url 'cart:cart_remove' product.id %}" class="card-link">remove</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    {% endwith %}      
-{% endfor %}  
+      {% endwith %}      
+    {% endfor %}  
+  {% else %}
+    <div>your cart is empty</div>
+  {% endif %}
+{% endwith %}
   <div class="text-right">
     <p>subtotal</p>
     <p class="num">${{ cart.get_total_price }}</p>

@@ -66,11 +66,11 @@
               cart: 
                 {{ total_items }} item{{ total_items|pluralize }},
                 ${{ cart.get_total_price }}
-              </a>
             {% else %}
               your cart is empty.
             {% endif %}
           {% endwith %}
+        </a>
       </nav>
     </div>
   </header>
