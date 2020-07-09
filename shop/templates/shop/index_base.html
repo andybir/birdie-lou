@@ -45,42 +45,39 @@
   </head>
   <body class="text-center">
     <div class=" d-flex w-100 h-100 py-3 px-2 mx-auto flex-column">
-  <header class="container mb-3">
-    <div class="inner">
-      <a href="{% url 'shop:index' %}"><img class="masthead-brand" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link" href="/shop">shop</a>
-        <a class="nav-link" href="/about">about</a>
-        <a class="nav-link" href="/contact">contact</a>
-        <a class="nav-link" href="/info">info</a>
-        <a class="nav-link" href="{% url 'cart:cart_detail' %}">
-        {% with total_items=cart|length %}
-            {% if cart|length > 0 %}
-              <!-- cart:  -->
-                {{ total_items }} item{{ total_items|pluralize }}:
-                ${{ cart.get_total_price }}
-            {% else %}
-              cart
-            {% endif %}
-          {% endwith %}
-        </a>
-      </nav>
+      <header class="container mb-3">
+        <div class="inner">
+          <a href="{% url 'shop:index' %}"><img class="masthead-brand" src="{% static 'img/master_logo_stacked.png' %}" alt=""></a>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link" href="/shop">shop</a>
+            <a class="nav-link" href="/about">about</a>
+            <a class="nav-link" href="/contact">contact</a>
+            <a class="nav-link" href="/info">info</a>
+            <a class="nav-link" href="{% url 'cart:cart_detail' %}">
+            {% with total_items=cart|length %}
+                {% if cart|length > 0 %}
+                  <!-- cart:  -->
+                    {{ total_items }} item{{ total_items|pluralize }}:
+                    ${{ cart.get_total_price }}
+                {% else %}
+                  cart
+                {% endif %}
+              {% endwith %}
+            </a>
+          </nav>
+        </div>
+      </header>
+      <main role="main" class="inner cover container px-0">
+        {% block content %}
+        {% endblock content %}
+      </main>
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>&copy 2020 birdie lou</p>
+        </div>
+      </footer>
     </div>
-  </header>
-  <main role="main" class="inner cover container px-0">
-    
-    {% block content %}
-      
-    {% endblock content %}
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>&copy 2020 birdie lou</p>
-    </div>
-  </footer>
-</div>
-</body>
+  </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
