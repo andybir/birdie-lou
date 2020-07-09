@@ -9,15 +9,15 @@
   <div class="container p-0">
     <img class="img-fluid detail-img" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" alt="{{ product.name }}">
   </div>
-  <div class="container">
+  <div class="container px-0 py-2">
     <h2>{{ product.name }}</h2>
     <p><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></p>
     <p>${{ product.price }}</p>
-    <form action="{% url 'cart:cart_add' product.id %}" method="post">
-      {{ cart_product_form }}
-      {% csrf_token %}
-      <input class="btn btn-dark" type="submit" value="add to cart">
-    </form>
+      <form class="btn-group" action="{% url 'cart:cart_add' product.id %}" method="post">
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input class="btn btn-block btn-outline-dark" type="submit" value="add to cart">
+      </form>
     {{ product.description|linebreaks }}
   </div>
 {% endblock %}

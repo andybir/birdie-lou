@@ -1,5 +1,3 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-@import url('https://fonts.googleapis.com/css2?family=Manrope');
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200&display=swap');
 
@@ -391,7 +389,7 @@ ul.errorlist {
 }
 
 #header .logo {
-    font-family: 'Manrope', sans-serif;
+    /* font-family: 'Manrope', sans-serif; */
     font-weight: 600;
     float:left; 
     color:#333;
@@ -593,6 +591,11 @@ ul.errorlist {
     padding: 3px 0 3px 100px;
 }
 
+/* crispy forms */
+.asteriskField {
+    display: none;
+}
+
 /* Bootstrap customs */
 .masthead {
     margin: 0 1rem 0 1rem;
@@ -601,10 +604,6 @@ ul.errorlist {
     background-color: #fff;
     margin-bottom: 0;
 }
-
-/* .container {
-    padding: 0;
-} */
 
 .detail-img {
     border: 1px solid rgba(0, 0, 0, 0.125);

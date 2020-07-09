@@ -7,6 +7,9 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from io import BytesIO
 from cart.cart import Cart
+from weasyprint import HTML
+from weasyprint.pdf import PDFFile, pdf_format
+
 
 def payment_process(request):
     # cart = Cart(request)
@@ -70,3 +73,13 @@ def payment_done(request):
 
 def payment_canceled(request):
     return render(request, 'payment/canceled.html')
+
+# Edit WeasyPrint PDF
+# html = HTML('http://weasyprint.org/')
+# content = BytesIO(html.write_pdf())
+# pdf_file = PDFFile(content)
+# params = pdf_format('/OpenAction [0 /FitV null]')
+# pdf_file.extend_dict(pdf_file.catalog, params)
+# pdf_file.finish()
+# pdf = pdf_file.fileobj.getvalue()
+# open('/tmp/weasyprint.pdf', 'wb').write(pdf)

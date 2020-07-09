@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+<div class="p-0 mb-3">
 <h1>my cart</h1>
   {% with total_items=cart|length %}
     {% if cart|length > 0 %}
@@ -21,19 +22,19 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <a href="{{ product.get_absolute_url }}">
-                    <h5 class="card-title">{{ product.name }}</h5>
+                    <h5 class="card-title">{{ product.name }}&nbsp;x{{ item.quantity }}</h5>
                   </a>
                   <p class="card-text">
                     <form class="btn-group" action="{% url 'cart:cart_add' product.id %}" method="post">
                     {{ item.update_quantity_form.quantity }}
                     {{ item.update_quantity_form.update }}
-                    <input class="btn btn-dark" type="submit" value="update">
+                    <input class="btn btn-outline-dark" type="submit" value="update">
                     {% csrf_token %}
                     </form>
                   </p>
-                  <p class="card-text">price: ${{ item.price }}</p>
+                  <!-- <p class="card-text">price: ${{ item.price }}</p> -->
                   <p class="card-text">item total price: ${{ item.total_price }}</p>
-                  <a href="{% url 'cart:cart_remove' product.id %}" class="card-link">remove</a>
+                  <p class="card-text"><a href="{% url 'cart:cart_remove' product.id %}" class="card-link">remove</a></p>
                 </div>
               </div>
             </div>
@@ -41,117 +42,19 @@
         {% endwith %}      
       {% endfor %}  
       <div class="text-right">
-        <p>subtotal</p>
-        <p class="num">${{ cart.get_total_price }}</p>
+        <p></p>
+        <p class="num">subtotal: &nbsp; ${{ cart.get_total_price }}</p>
       </div>
       <div class="container px-0">
-        <a href="{% url 'shop:product_list' %}" class="btn btn-block btn-light">continue shopping</a>
+        <a href="{% url 'shop:product_list' %}" class="btn btn-block btn-outline-dark">continue shopping</a>
         <a href="{% url 'orders:order_create' %}" class="btn btn-block btn-dark">checkout</a>
       </div>
     {% else %}
       <div class="container px-0">
-        <p>your cart is empty</p>
+        <p>...is empty</p>
         <a href="{% url 'shop:product_list' %}" class="btn btn-block btn-dark">continue shopping</a>
     </div>
     {% endif %}
   {% endwith %}
-{% endblock %}
-
-<!-- <div class="container-fluid">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="row">
-            <div class="col-xs-12 col-sm-5 ">
-              <a href="{{ product.get_absolute_url }}">
-                <img class="img-fluid" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
-              </a>
-            </div>
-            <div class="col-xs-10 col-sm-5 text-left">
-              <a href="{{ product.get_absolute_url }}">
-                {{ product.name }}
-              </a>
-              <div>
-                <p>quantity: </p>
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                  {{ item.update_quantity_form.quantity }}
-                  {{ item.update_quantity_form.update }}
-                  <input type="submit" value="Update">
-                  {% csrf_token %}
-                </form>
-                <p>price: ${{ item.price }}</p>
-                <p>item total price: {{ item.total_price }}</p>
-              </div>
-            </div>
-            <div class="col-xs-2 text-right">
-              <a href="{% url 'cart:cart_remove' product.id %}">remove</a>
-            </div>
-          </div>
-        <div class="col-sm">
-        </div>
-        <div class="col-sm">
-          
-        </div>
-        <div class="col-sm">
-        </div>
-        <div class="col-sm">
-          
-        </div>
-        <div class="col-sm">
-          
-        </div>
-        <div class="w-100"></div>
-      </div>
-    </div>
-  </div> -->
-
-<div class="table-responsive">
-  <h1>Your shopping cart</h1>
-  <table class="cart table">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Remove</th>
-        <th>Unit price</th>
-        <th>Price</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in cart %}
-        {% with product=item.product %}
-          <tr>
-            <td>
-              <a href="{{ product.get_absolute_url }}">
-                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
-              </a>
-            </td>
-            <td>{{ product.name }}</td>
-            <td>
-              <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                {{ item.update_quantity_form.quantity }}
-                {{ item.update_quantity_form.update }}
-                <input type="submit" value="Update">
-                {% csrf_token %}
-              </form>
-            </td>
-            <td><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
-            <td class="num">${{ item.price }}</td>
-            <td class="num">${{ item.total_price }}</td>
-          </tr>
-        {% endwith %}
-      {% endfor %}
-      <tr class="total">
-        <td>Total</td>
-        <td colspan="4"></td>
-        <td class="num">${{ cart.get_total_price }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <p class="text-right">
-    <a href="{% url 'shop:product_list' %}" class="button light">Continue shopping</a>
-    <a href="{% url 'orders:order_create' %}" class="button">
-      Checkout
-    </a>
-  </p>
 </div>
+{% endblock %}
