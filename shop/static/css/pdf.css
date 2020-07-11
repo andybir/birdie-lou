@@ -31,6 +31,12 @@ thead th, tbody tr.total {
     font-weight:bold;
 }
 
+tbody tr.shipping {
+    background: #111;
+    color: #fff;
+    font-weight: bold;
+}
+
 h1 {
     margin:0;
 }

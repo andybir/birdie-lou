@@ -44,7 +44,7 @@ class Order(models.Model):
     def get_total_cost(self):
         total_cost = sum(item.get_cost() for item in self.items.all()) 
         return total_cost - total_cost * \
-            (self.discount / Decimal('100'))
+            (self.discount / Decimal('100')) + 5
 
 
 class OrderItem(models.Model):

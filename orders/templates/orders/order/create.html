@@ -26,12 +26,17 @@
       </li>
       {% endfor %}
       <li class="list-group-item d-flex justify-content-between">
+        <h6>shipping</h6>
+        <span class="text-muted">$5.00</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between">
         <span>total</span>
         <strong>${{ cart.get_total_price }}</strong>
       </li>
     </ul>
   </div>
   <div class="col-md-8 order-md-1">
+    <h1>shipping address</h1>
     <form action="." method="post" class="">
       {% csrf_token %}
       <div class="text-left">

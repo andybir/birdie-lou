@@ -34,7 +34,7 @@ class Cart(object):
 
     def save(self):
         """
-        mark the session as 'modified' to make sure it gets save
+        mark the session as 'modified' to make sure it gets saved
         """
         self.session.modified = True
 
@@ -71,7 +71,7 @@ class Cart(object):
         return sum(item['quantity'] for item in self.cart.values())
 
     def get_total_price(self):
-        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        return sum(5 + Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def clear(self):
         # remove cart from session
