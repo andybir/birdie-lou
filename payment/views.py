@@ -37,6 +37,8 @@ def payment_process(request):
             order.paid = True
             # store unique transaction id
             order.braintree_id = result.transaction.id
+            # pass through total order amount
+            order.amount = result.transaction.amount
             order.save()
             # create invoice e-mail
             subject = 'birdie lou - invoice no. {}'.format(order.id)

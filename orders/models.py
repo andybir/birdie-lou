@@ -26,6 +26,7 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     paid = models.BooleanField(default=False)
     braintree_id = models.CharField(max_length=150, blank=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, null=True)
     coupon = models.ForeignKey(Coupon,
                                related_name='orders',
                                null=True,
