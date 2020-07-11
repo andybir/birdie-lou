@@ -23,8 +23,13 @@ def payment_process(request):
         result = braintree.Transaction.sale({
             'amount': '{:.2f}'.format(order.get_total_cost()),
             'payment_method_nonce': nonce,
+            "order_id" : order_id,
             'options': {
-                'submit_for_settlement': True
+                'submit_for_settlement': True,
+                "paypal": {
+                    "custom_field" : "PayPal custom field",
+                    "description" : "Description for PayPal email receipt",
+                },
             }
         })
         if result.is_success:

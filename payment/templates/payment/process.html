@@ -29,6 +29,8 @@
       <!-- <div class="col-md-8 order-md-1"> -->
           <!-- <hr class="mb-4"> -->
     <h1 class="mb-3">payment</h1>
+    <div id="paypal-button"></div>
+    <div id="paypal-credit-button"></div>
         <form class="text-left" action="." id="payment" method="post">
             <div class="row">
                 <div class="col mb-3">
@@ -87,11 +89,15 @@
         </form> -->
     <!-- </div> -->
 </div>
+  <!-- Load PayPal's checkout.js Library. -->
+  <script src="https://www.paypalobjects.com/api/checkout.js" data-version-4 log-level="warn"></script>
+  <!-- Load the PayPal Checkout component. -->
+  <script src="https://js.braintreegateway.com/web/3.63.0/js/paypal-checkout.min.js"></script>
 
   <!-- Load the required client component. -->
-  <script src="https://js.braintreegateway.com/web/3.29.0/js/client.min.js"></script>
+  <script src="https://js.braintreegateway.com/web/3.63.0/js/client.min.js"></script>
   <!-- Load Hosted Fields component. -->
-  <script src="https://js.braintreegateway.com/web/3.29.0/js/hosted-fields.min.js"></script>
+  <script src="https://js.braintreegateway.com/web/3.63.0/js/hosted-fields.min.js"></script>
   <script>
     let form = document.querySelector('#payment')
     let submit = document.querySelector('input[type="submit"]')
@@ -104,41 +110,132 @@
             return
         }
 
-        braintree.hostedFields.create({
-            client: clientInstance,
-            styles: {
-                'input': {'font-size': '13px'},
-                'input.invalid': {'color': 'red'},
-                'input.valid': {'color': 'green'} 
-            },
-            fields: {
-                number: {selector: '#card-number'},
-                cvv: {selector: '#cvv'},
-                expirationDate: {selector: '#expiration-date'}
-            }
-        }, function (hostedFieldsErr, hostedFieldsInstance) {
-            if (hostedFieldsErr) {
-                console.error(hostedFieldsErr)
-                return
-            }
+        // Create a PayPal Checkout component.
+        braintree.paypalCheckout.create({
+          client: clientInstance
+        }, function (paypalCheckoutErr, paypalCheckoutInstance) {
+          // Stop if there was a problem creating PayPal Checkout.
+          // This could happen if there was a network error or if it's incorrectly
+          // configured.
+          if (paypalCheckoutErr) {
+            console.error('Error creating PayPal Checkout:', paypalCheckoutErr);
+            return;
+          }
 
-            submit.removeAttribute('disabled')
+            // Set up PayPal with the checkout.js library
+            paypal.Button.render({
+              env: 'sandbox', // or 'production'
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault()
+              payment: function () {
+                return paypalCheckoutInstance.createPayment({
+                  // Your PayPal options here. For available options, see
+                  // http://braintree.github.io/braintree-web/current/PayPalCheckout.html#createPayment
+                  flow: 'checkout', // Required
+                  amount: 10.00, // Required
+                  currency: 'USD', // Required
+                  enableShippingAddress: true,
+                  shippingAddressEditable: false,
+                  shippingAddressOverride: {
+                    recipientName: 'Scruff McGruff',
+                    line1: '1234 Main St.',
+                    line2: 'Unit 1',
+                    city: 'Chicago',
+                    countryCode: 'US',
+                    postalCode: '60652',
+                    state: 'IL',
+                    phone: '123.456.7890'
+                  }
+                });
+              },
 
-                hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
-                    if (tokenizeErr) {
-                        console.error(tokenizeErr)
-                        return
-                    }
-                    // set nonce to send to server
-                    document.getElementById('nonce').value = payload.nonce
-                    // submit form
-                    document.getElementById('payment').submit()
-                })
-            }, false)
-        })
+              onAuthorize: function (data, actions) {
+                return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
+                  // Submit `payload.nonce` to your server.
+                  // set nonce to send to server
+                  document.getElementById('nonce').value = payload.nonce
+                        // submit form
+                  document.getElementById('payment').submit()
+                });
+              },
+
+              onCancel: function (data) {
+                console.log('checkout.js payment cancelled', JSON.stringify(data, 0, 2));
+              },
+
+              onError: function (err) {
+                console.error('checkout.js error', err);
+              }
+        }, '#paypal-button').then(function () {
+          // The PayPal button will be rendered in an html element with the id
+          // `paypal-button`. This function will be called when the PayPal button
+          // is set up and ready to be used.
+        });
+
+        //  // set up PayPal credit button
+        //   paypal.Button.render({
+        //     env: 'sandbox', // or 'production'
+        //     style: {
+        //       label: 'credit'
+        //     },
+        //     payment: function () {
+        //       return paypalCheckoutInstance.createPayment({
+        //         flow: 'checkout', // Required
+        //         amount: 10.00, // Required
+        //         currency: 'USD', // Required
+        //         offerCredit: true
+        //       });
+        //     },
+        //     onAuthorize: function (data, actions) {
+        //       return paypalCheckoutInstance.tokenizePayment(data, function (err, payload) {
+        //         // Submit `payload.nonce` to your server
+        //         // set nonce to send to server
+        //         document.getElementById('nonce').value = payload.nonce
+        //         // submit form
+        //         document.getElementById('payment').submit()
+        //       });
+        //     },
+        //   }, '#paypal-credit-button').then(function () {
+        //   // The PayPal button will be rendered in an html element with the id
+        //   // `paypal-button`. This function will be called when the PayPal button
+        //   // is set up and ready to be used.;
+        // });
+      }),
+      
+      braintree.hostedFields.create({
+          client: clientInstance,
+          styles: {
+              'input': {'font-size': '13px'},
+              'input.invalid': {'color': 'red'},
+              'input.valid': {'color': 'green'} 
+          },
+          fields: {
+              number: {selector: '#card-number'},
+              cvv: {selector: '#cvv'},
+              expirationDate: {selector: '#expiration-date'}
+          }
+      }, function (hostedFieldsErr, hostedFieldsInstance) {
+          if (hostedFieldsErr) {
+              console.error(hostedFieldsErr)
+              return
+          }
+
+          submit.removeAttribute('disabled')
+
+          form.addEventListener('submit', function (event) {
+            event.preventDefault()
+
+            hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
+              if (tokenizeErr) {
+                  console.error(tokenizeErr)
+                  return
+              }
+                // set nonce to send to server
+                document.getElementById('nonce').value = payload.nonce
+                // submit form
+                document.getElementById('payment').submit()
+            })
+        }, false)
+      })
     })
   </script>
 {% endblock content %}
