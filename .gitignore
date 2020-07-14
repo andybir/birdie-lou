@@ -57,7 +57,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-/birdie_lou/settings/base.py
+birdie_lou/settings/base.py
 db.sqlite3
 db.sqlite3-journal
 
