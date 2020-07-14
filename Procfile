@@ -1,1 +1,1 @@
-web: gunicorn birdie-lou.wsgi --log-file -
+web: gunicorn birdie_lou.wsgi --log-file -
