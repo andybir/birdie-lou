@@ -62,6 +62,8 @@ class Cart(object):
         for item in cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
+            item['category'] = product.category
+            item['available'] = product.available
             yield item
 
     def __len__(self):
@@ -69,6 +71,10 @@ class Cart(object):
         Count all items in the cart
         """
         return sum(item['quantity'] for item in self.cart.values())
+
+    def get_price_before_shipping(self):
+        price_before_shipping = sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        return price_before_shipping
 
     def get_total_price(self):
         shipping = 5

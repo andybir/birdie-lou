@@ -58,7 +58,7 @@
                 {% if cart|length > 0 %}
                   <!-- cart:  -->
                     {{ total_items }} item{{ total_items|pluralize }}:
-                    ${{ cart.get_total_price }}
+                    ${{ cart.get_price_before_shipping }}
                 {% else %}
                   cart
                 {% endif %}
@@ -72,8 +72,19 @@
         {% endblock content %}
       </main>
       <footer class="mastfoot mt-auto">
+
         <div class="inner">
-          <p>&copy 2020 birdie lou brooklyn</p>
+          <hr class="featurette-divider">
+
+          <nav class="nav  justify-content-center">
+            <a class="nav-link" href="/shop">shop</a>
+            <a class="nav-link" href="/about">about</a>
+            <a class="nav-link" href="/contact">contact</a>
+            <a class="nav-link" href="/info">info</a>
+          </nav>
+          <small class="text-muted">&copy 2020 birdie lou brooklyn</small>
+          
+            
         </div>
       </footer>
     </div>

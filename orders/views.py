@@ -1,17 +1,15 @@
 from django.conf import settings
 from django.http import HttpResponse
-import logging
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Product
 from .forms import OrderCreateForm
 from cart.cart import Cart
 from .tasks import order_created
 from django.contrib.admin.views.decorators import staff_member_required
 import weasyprint
 
-logger = logging.getLogger(__name__)
 
 def order_create(request):
     cart = Cart(request)
@@ -23,15 +21,31 @@ def order_create(request):
                 order.coupon = cart.coupon
                 order.discount = cart.coupon.discount
             order.save()
-            logger.error('hello')
             for item in cart:
                 OrderItem.objects.create(order=order,
                                          product=item['product'],
                                          price=item['price'],
-                                         quantity=item['quantity'])
-                # if vintage, make unavailable for purchase
-                # if item.category == 'vintage accessories' or 'vintage clothes':
-                #     item.available = False
+                                         quantity=item['quantity'],
+                                         category=item['category'],
+                                         available=item['available'])
+                '''
+                if vintage, make unavailable for purchase
+                '''
+                # if item['category'] == 'vintage accessories':
+                #     item['available'] = False
+                # current_order = OrderItem.objects.filter(order_id=order.id)
+                # vintage = current_order.filter(category__startswith='vintage')
+                # vint_id = vintage.values_list('product', flat=True)
+                #     for id in vint_id:
+                #         Product.objects.filter(id=id).update(available=False)
+
+                # vintage = OrderItem.objects.filter(category__contains='vintage')
+                # vintage_id = vintage.values('product_id')
+                # first_id = vintage_id[:1]
+                # Product.objects.filter(id=first_id).update(available=False)
+                # vintage.update(available=False)
+                    # vintage = OrderItem.objects.get(category__contains='vintage')
+                    # vintage.update(available=False)
 
             # clear the cart
             cart.clear()

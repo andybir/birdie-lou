@@ -24,11 +24,14 @@
                   <a href="{{ product.get_absolute_url }}">
                     <h5 class="card-title">{{ product.name }}&nbsp;x{{ item.quantity }}</h5>
                   </a>
+                  <a href="{{ product.get_absolute_url }}">
+                    <h6 class="card-title">{{ product.category }}</h6>
+                  </a>
                   <p class="card-text">
                     <form class="btn-group" action="{% url 'cart:cart_add' product.id %}" method="post">
                     {{ item.update_quantity_form.quantity }}
                     {{ item.update_quantity_form.update }}
-                    <input class="btn btn-outline-dark" type="submit" value="update">
+                    <input class="btn btn-outline-dark btn-sm" type="submit" value="update">
                     {% csrf_token %}
                     </form>
                   </p>
@@ -42,8 +45,8 @@
         {% endwith %}      
       {% endfor %}  
       <div class="text-right">
-        <p class="num">flat rate shipping: &nbsp; $5.00</p>
-        <p class="num">subtotal: &nbsp; ${{ cart.get_total_price }}</p>
+        <!-- <p class="num">flat rate shipping: &nbsp; $5.00</p> -->
+        <p class="num">subtotal: &nbsp; ${{ cart.get_price_before_shipping }}</p>
       </div>
       <div class="container px-0">
         <a href="{% url 'shop:product_list' %}" class="btn btn-block btn-outline-dark">continue shopping</a>

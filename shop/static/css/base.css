@@ -608,6 +608,12 @@ ul.errorlist {
 .detail-img {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
+    /* height: 50rem; */
+    /* object-fit: cover; */
+}
+
+.featurette-divider {
+    margin: 1rem 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* braintree hosted fields */
