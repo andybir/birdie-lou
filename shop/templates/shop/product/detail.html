@@ -17,7 +17,7 @@
       {% if product.size %}
         <div>
           <form class="btn-group" action="{% url 'cart:cart_add' product.id %}" method="post">
-            {{ cart_size_form }}
+            {{ cart_prod_size_form }}
             {% csrf_token %}
             <input class="btn btn-block btn-outline-dark" type="submit" value="select size & add to cart">
           </form>

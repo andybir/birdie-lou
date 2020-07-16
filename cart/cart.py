@@ -16,7 +16,7 @@ class Cart(object):
         # store current applied coupon
         self.coupon_id = self.session.get('coupon_id')
 
-    def add(self, product, quantity=1, update_quantity=False, size=False, update_size=False):
+    def add(self, product, quantity=1, update_quantity=False, size='0-3', update_size=False):
         # Add a product to the cart or update its quantity.
         product_id = str(product.id)
         if product_id not in self.cart:

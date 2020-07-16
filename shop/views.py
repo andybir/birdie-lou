@@ -34,11 +34,11 @@ def product_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
     cart_product_form = CartAddProductForm()
-    cart_size_form = CartAddSizeProductForm()
+    cart_prod_size_form = CartAddSizeProductForm()
 
     return render(request,
                   'shop/product/detail.html',
                   {'product': product,
                    'cart_product_form': cart_product_form,
-                   'cart_size_form': cart_size_form})
+                   'cart_prod_size_form': cart_prod_size_form})
 
