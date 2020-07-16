@@ -16,7 +16,8 @@ class Order(models.Model):
                                max_length=250)
     city = models.CharField('city', 
                             max_length=100)
-    country = CountryField(default=['US'])
+    country = CountryField(default=['US'],
+                           max_length=100)
     state = models.CharField('state',
                              max_length=100,
                             default='')
