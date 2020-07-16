@@ -25,9 +25,11 @@
       <div class="row">
         {% for product in products %}
           <div class="col-xs-6 col-sm-6  card-group p-1">
-            <div class="card mb-2 shadow-sm">
+            <div class="card h-100 mb-2 shadow-sm" >
               <a href="{{ product.get_absolute_url }}">
-                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="bd-placeholder-img card-img-top img-fluid"/>
+                <div >
+                  <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" class="card-img-top img-fluid" sizes="100vw;"/>
+                </div>
                 <div class="card-body">
                   <a href="{{ product.get_absolute_url }}">
                     <p class="card-text mb-1">{{ product.category }}</p>
