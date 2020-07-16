@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
-from cart.forms import CartAddProductForm
+from cart.forms import CartAddProductForm, CartAddSizeProductForm
 
 def index(request):
     return render(request, 'shop/index.html')
@@ -34,9 +34,11 @@ def product_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
     cart_product_form = CartAddProductForm()
+    cart_size_form = CartAddSizeProductForm()
 
     return render(request,
                   'shop/product/detail.html',
                   {'product': product,
-                   'cart_product_form': cart_product_form,})
+                   'cart_product_form': cart_product_form,
+                   'cart_size_form': cart_size_form})
 

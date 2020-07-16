@@ -20,6 +20,15 @@ class Category(models.Model):
                         args=[self.slug])
 
 
+class Size(models.Model):
+    size = models.CharField(max_length=100,
+                            blank=True,
+                            null=True)
+
+    def __str__(self):
+        return self.size
+
+
 class Product(models.Model):
     category = models.ForeignKey(Category,
                                  related_name='products',
@@ -28,9 +37,20 @@ class Product(models.Model):
     slug = models.SlugField(max_length=200, db_index=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d',
                               blank=True)
+    image_2 = models.ImageField(upload_to='products/%Y/%m/%d',
+                                blank=True,
+                                null=True)
+    image_3 = models.ImageField(upload_to='products/%Y/%m/%d',
+                                blank=True,
+                                null=True)
+    image_4 = models.ImageField(upload_to='products/%Y/%m/%d',
+                                blank=True,
+                                null=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10,
                                 decimal_places=2)
+    size = models.BooleanField(default=False,
+                               null=True)
     available = models.BooleanField(default=True)
     stock = models.PositiveIntegerField(default=100)
     created = models.DateTimeField(auto_now_add=True)

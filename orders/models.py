@@ -1,5 +1,6 @@
 from django.db import models
 from shop.models import Product, Category
+from shop.models import Size
 from decimal import Decimal
 from django.core.validators import MinValueValidator, \
                                    MaxValueValidator
@@ -61,6 +62,9 @@ class OrderItem(models.Model):
     category = models.CharField(max_length=100,
                                 null=True)
     available = models.BooleanField(default=True)
+    size = models.CharField(max_length=10,
+                            blank=True,
+                            null=True)
 
     def __str__(self):
         return '{}'.format(self.id)
